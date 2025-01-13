@@ -1,0 +1,10 @@
+check_settings:
+  # 重复次数阈值（大于此值则标记为异常）
+  duplicate_threshold: 2
+  # 是否在日志中记录详细信息
+  detailed_logging: true
+  # 是否忽略大小写
+  case_sensitive: false
+  # 测试模式（仅处理前10行）
+  test_mode: false
+  test_rows: 10 
