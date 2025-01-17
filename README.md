@@ -10,6 +10,8 @@
 - 支持大小写不敏感的比较
 - 在 Excel 中添加重复词检测列，显示重复词及其出现次数
 - 用红色标记包含重复词的单元格
+- 支持多语言处理（可选择性开启）
+- 支持多工作表处理
 - 生成详细的检查报告
 
 ## 使用方法
@@ -19,12 +21,18 @@
 pip install -r requirements.txt
 ```
 
-2. 运行程序：
+2. 配置 `config.yaml`：
+   - 设置标题列名（必填）
+   - 配置是否启用语言检测
+   - 如果启用语言检测，设置语言列名
+   - 配置要处理的工作表
+
+3. 运行程序：
 ```bash
 python main.py
 ```
 
-3. 在弹出的文件选择窗口中选择要检查的 Excel 文件（.xlsx 格式）
+4. 在弹出的文件选择窗口中选择要检查的 Excel 文件（.xlsx 格式）
 
 程序会在源文件所在目录生成：
 - `marked_原文件名.xlsx`：包含检测结果的 Excel 文件
@@ -35,8 +43,27 @@ python main.py
 ## 配置说明
 
 可以在 `config.yaml` 中修改以下配置：
+
+### 基本设置
 - `duplicate_threshold`：重复次数阈值（默认为2）
 - `case_sensitive`：是否区分大小写（默认为false）
+
+### 列设置
+- `title_column`：标题列的列名
+- `enable_language_check`：是否启用语言检测
+- `language_column`：语言列的列名
+- `english_identifier`：英语的标识符
+
+### 工作表设置
+- `target_sheets`：要处理的工作表名称列表
+- `process_first_n_sheets`：处理前N个工作表
+- `empty_row_threshold`：连续空行判定阈值
+
+## 多语言支持
+
+- 启用语言检测时，程序会根据语言列的值决定处理方式
+- 对于英语内容：执行完整的处理（包括介词过滤和单复数处理）
+- 对于非英语内容：仅进行重复词检测，不做语言相关处理
 
 ## 系统要求
 

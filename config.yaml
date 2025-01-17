@@ -5,6 +5,18 @@ check_settings:
   detailed_logging: true
   # 是否忽略大小写
   case_sensitive: false
-  # 测试模式（仅处理前10行）
+  # 测试模式（仅处理前N行）
   test_mode: false
-  test_rows: 10 
+  test_rows: 500
+
+column_settings:
+  # 标题列名（必填）
+  title_column: "title"
+  # 重复词列名（必填）
+  duplicate_column: "重复词"
+  # 是否启用语言检测
+  enable_language_check: true
+  # 语言列名（仅在启用语言检测时需要）
+  language_column: "语言"
+  # 英语的标识（在语言列中表示英语的值）
+  english_identifier: "英语" 
